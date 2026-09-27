@@ -1,0 +1,1 @@
+import runpod ; from chatterbox.mtl_tts import ChatterboxMultilingualTTS ; import torch ; device = "cuda" if torch.cuda.is_available() else "cpu"; model = ChatterboxMultilingualTTS.from_pretrained(device=device); import torchaudio as ta; def handler(job): return {"status": "Grandpaa Voice Worker Ready"}; runpod.serverless.start({"handler": handler})
