@@ -1,13 +1,19 @@
 FROM nvidia/cuda:12.4.1-cudnn-runtime-ubuntu22.04
 
-RUN apt-get update && apt-get install -y python3 python3-pip ffmpeg git && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get install -y \
+    python3.11 \
+    python3-pip \
+    ffmpeg \
+    git \
+    && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
 
 COPY requirements.txt .
 
-RUN pip3 install --no-cache-dir -r requirements.txt
+RUN python3.11 -m pip install --no-cache-dir --upgrade pip setuptools wheel && \
+    python3.11 -m pip install --no-cache-dir -r requirements.txt
 
 COPY handler.py .
 
-CMD ["python3", "-u", "handler.py"]
+CMD ["python3.11", "-u", "handler.py"]
