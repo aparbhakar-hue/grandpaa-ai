@@ -1,17 +1,7 @@
-import torch
 import uvicorn
-from fastapi import FastAPI
-from pydantic import BaseModel
-from chatterbox.mtl_tts import ChatterboxMultilingualTTS
+from fastapi import FastAPI, Request
 
 app = FastAPI()
-
-device = "cuda" if torch.cuda.is_available() else "cpu"
-model = None
-
-
-class RequestData(BaseModel):
-    input: dict = {}
 
 
 @app.get("/health")
@@ -20,15 +10,12 @@ def health():
 
 
 @app.post("/run")
-def run(data: RequestData):
-    global model
-
-    if model is None:
-        model = ChatterboxMultilingualTTS.from_pretrained(device=device)
+async def run(request: Request):
+    data = await request.json()
 
     return {
-        "status": "Grandpaa Voice Worker Ready",
-        "device": device
+        "status": "Grandpaa GridShare connection OK",
+        "received": data
     }
 
 
