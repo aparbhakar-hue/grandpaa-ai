@@ -17,4 +17,4 @@ RUN python3.11 -m pip install --no-cache-dir --upgrade pip setuptools wheel && \
 
 COPY handler.py .
 
-CMD ["python3.11", "-u", "handler.py"]
+CMD ["python3.11", "-u", "handler.py"]python3.11-dev \
