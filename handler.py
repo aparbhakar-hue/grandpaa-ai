@@ -19,7 +19,7 @@ def health():
     return {"status": "ok"}
 
 
-@app.post("/")
+@app.post("/run")
 def run(data: RequestData):
     global model
 
