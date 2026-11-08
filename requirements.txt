@@ -1,4 +1,8 @@
-runpod
-chatterbox-tts==0.1.7
 fastapi
 uvicorn
+chatterbox-tts==0.1.7
+transformers==4.46.3
+sentencepiece
+scipy
+numpy
+uroman
