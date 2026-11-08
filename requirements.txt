@@ -1,7 +1,7 @@
 fastapi
 uvicorn
 chatterbox-tts==0.1.7
-transformers==4.46.3
+transformers==5.2.0
 sentencepiece
 scipy
 numpy
